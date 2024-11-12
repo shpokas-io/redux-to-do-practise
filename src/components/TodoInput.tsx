@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todoSlice";
 
-const TodoInput: React.fc = () => {
+const TodoInput: React.FC = () => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
@@ -21,12 +21,12 @@ const TodoInput: React.fc = () => {
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a new to-do"
       />
-      <Button
+      <button
         onClick={handleAddTodo}
         className="bg-blue-500 text-white p-2 rounded"
       >
         Add
-      </Button>
+      </button>
     </div>
   );
 };
