@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todoSlice";
+import { Button, TextField } from "@mui/material";
 
 const TodoInput: React.FC = () => {
   const [text, setText] = useState("");
@@ -14,19 +15,16 @@ const TodoInput: React.FC = () => {
   };
   return (
     <div className="flex space-x-2">
-      <input
-        className="border p-2 flex-1"
-        type="text"
+      <TextField
+        variant="outlined"
+        label="Add a new to-do"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Add a new to-do"
+        fullWidth
       />
-      <button
-        onClick={handleAddTodo}
-        className="bg-blue-500 text-white p-2 rounded"
-      >
+      <Button onClick={handleAddTodo} variant="contained" color="primary">
         Add
-      </button>
+      </Button>
     </div>
   );
 };
