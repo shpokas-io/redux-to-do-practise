@@ -7,11 +7,14 @@ interface Todo {
 }
 
 const initialState: Todo[] = [];
-const todoSlice = createSlive({
+const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
+    addTodo: (
+      state: { id: string; text: string; completed: boolean }[],
+      action: PayloadAction<string>
+    ) => {
       state.push({
         id: Math.random().toString(),
         text: action.payload,
@@ -22,7 +25,7 @@ const todoSlice = createSlive({
       const todo = state.find((todo) => todo.id === action.payload);
       if (todo) todo.completed = !todo.completed;
     },
-    deleteTodo: (state, action: PayloadAction<string>) => {
+    deleteTodo: (state: any[], action: PayloadAction<string>) => {
       return state.filter((todo) => todo.id !== action.payload);
     },
   },
